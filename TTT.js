@@ -79,7 +79,7 @@ var canvasClicked = function canvasClicked(canvasNumber){
   }
 }
 
-function checkForWinners(symbol){
+var checkForWinners = function checkForWinners(symbol){
     for(var a = 0; a < winningCombinations.length; a++){
 
     if(content[winningCombinations[a][0]]==symbol&&content[winningCombinations[a][1]]== symbol&&content[winningCombinations[a][2]]==symbol){
@@ -91,7 +91,7 @@ function checkForWinners(symbol){
  }
 }
 
-function playAgain(){
+var playAgain = function playAgain(){
    y = confirm("PLAY AGAIN?");
   if(y === true){
   location.reload(true);
@@ -105,4 +105,6 @@ function playAgain(){
 
 
 }
+
+
 
