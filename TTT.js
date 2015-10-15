@@ -1,4 +1,4 @@
-// JavaScript
+
 
  //Global Variables
 
@@ -20,9 +20,9 @@
   var painted = new Array();
   var content = new Array();
   winningCombinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-  for(var l = 0; l <= 8; l++){
-  painted[l] = false;
-  content[l]='';
+  for(var i = 0; i <= 8; i++){
+  painted[i] = false;
+  content[i]='';
  }
 
 
@@ -94,7 +94,6 @@ function checkForWinners(symbol){
 function playAgain(){
    y = confirm("PLAY AGAIN?");
   if(y === true){
-  alert("GET READY!");
   location.reload(true);
 }
 
