@@ -9,23 +9,15 @@ body{
     position: relative;
     width:auto;
     height:auto;
-
 }
 
-h3{
-     position:relative;
-     color: white
+h1 {
+    color: #d7ceb2;
+    font: 72px 'Sansita One';
+    text-align: center;
+    text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
 }
 
-h1{
-    position:relative;
-    color: white
-}
-
-h2{
-    position:relative;
-    color: white
-}
 
 .square:hover{
     background-color: rgba(251,7,253,0.8);
@@ -69,7 +61,7 @@ canvas{
     100%  {-webkit-transform: scale(100,100);}
 }
 
-#gameRegister{
+#game-register{
     position: absolute;
     left: 401px;
     top: 174px;
@@ -79,6 +71,13 @@ canvas{
     background-color: #C8C8C8;
     height: 470px;
     width: 470px;
-
-
 }
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+

@@ -13,37 +13,86 @@ var tttapi = {
 
   register: function register(credentials, callback) {
     this.ajax({
+      method: 'POST',
+      // url: 'http://httpbin.org/post',
+      url: this.ttt + '/users',
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify(credentials),
+      dataType: 'json'
     }, callback);
   },
 
   login: function login(credentials, callback) {
     this.ajax({
+      method: 'POST',
+      // url: 'http://httpbin.org/post',
+      url: this.ttt + '/login',
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify(credentials),
+      dataType: 'json'
     }, callback);
   },
 
   //Authenticated api actions
   listGames: function (token, callback) {
     this.ajax({
+      method: 'GET',
+      url: this.ttt + '/games',
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      dataType: 'json'
     }, callback);
   },
 
   createGame: function (token, callback) {
     this.ajax({
+      method: 'POST',
+      url: this.ttt + '/games',
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify({}),
+      dataType: 'json',
     }, callback);
   },
 
+
   showGame: function (id, token, callback) {
     this.ajax({
+      method: 'GET',
+      url: this.ttt + '/games/' + id,
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      dataType: 'json'
     }, callback);
   },
 
   joinGame: function (id, token, callback) {
     this.ajax({
+      method: 'PATCH',
+      url: this.ttt + '/games/' + id,
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify({}),
+      dataType: 'json'
     }, callback);
   },
 
   markCell: function (id, data, token, callback) {
     this.ajax({
+      method: 'PATCH',
+      url: this.ttt + '/games/' + id,
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify(data),
+      dataType: 'json'
     }, callback);
   },
 
@@ -70,7 +119,6 @@ $(function() {
     });
     return data;
   };
-
   var wrap = function wrap(root, formData) {
     var wrapper = {};
     wrapper[root] = formData;
@@ -122,7 +170,14 @@ $(function() {
     var token = $(this).children('[name="token"]').val();
     var id = $('#show-id').val();
     e.preventDefault();
-    tttapi.showGame(id, token, callback);
+      // gameId = data.game.id
+  //
+    tttapi.showGame(id, token, function(err, data){
+        gameId = data.game.id;
+        cell = data.game.cells;
+        token = data.user.token;
+
+    });
   });
 
   $('#join-game').on('submit', function(e) {
